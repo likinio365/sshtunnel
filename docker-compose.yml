@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+
+ sshtunnel:
+  image: likinio365/sshtunnel:1.1
+   #image: vlikollari/sshtunnel:latest0
+  network_mode: "host"
+  volumes:
+    - /root/docker/mycustomtunnel/data/:/data/:ro
+  environment:
+    - H=1
+    - REMOTE=true
+    - TUNNEL_HOST=10.1.1.198,10.1.2.199
+    - REMOTE_PORT=443,443
+    - REMOTE_HOST=10.1.1.74,10.2.1.75
+    - LOCAL_PORT=998,999
+    - KEY=/data/id_rsa
+  logging:
+    driver: syslog
+    options:
+      tag: docker-likinioSshtunnel
+  restart: always
