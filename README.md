@@ -36,9 +36,9 @@ In docker-compose.yml
 On the bellow example we forwarded port 10.1.1.10-12 443 on our local machine on ports 499 500 and 501.
 Is like you running the bellow commands in linux :
 
-    ssh -vv -o StrictHostKeyChecking=no -fN 10.10.10.1 -L 499:10.1.1.10:443
-    ssh -vv -o StrictHostKeyChecking=no -fN 10.10.10.2 -L 500:10.1.1.11:443
-    ssh -vv -o StrictHostKeyChecking=no -fN 10.10.10.3 -L 501:10.1.1.12:443
+    ssh -vv -o TCPKeepAlive=yes -o ServerAliveCountMax=20 -o ServerAliveInterval=15 -o StrictHostKeyChecking=no -fN 10.10.10.1 -L 499:10.1.1.10:443
+    ssh -vv -o TCPKeepAlive=yes -o ServerAliveCountMax=20 -o ServerAliveInterval=15 -o StrictHostKeyChecking=no -fN 10.10.10.2 -L 500:10.1.1.11:443
+    ssh -vv -o TCPKeepAlive=yes -o ServerAliveCountMax=20 -o ServerAliveInterval=15 -o StrictHostKeyChecking=no -fN 10.10.10.3 -L 501:10.1.1.12:443
 
 Here is the **docker-compose.yml** .
 Don't forget to define the number of tunnels you want on H variable , value should be number -1 . On my example is 3-1=2
