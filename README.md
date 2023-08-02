@@ -17,7 +17,7 @@ In docker-compose.yml
        version: '3.8'
         services:
          sshtunnel:
-          image: likinio365/sshtunnel
+          image: likinio365/sshtunnel:1.0
           network_mode: "host"
           volumes:
             - ~/data/:/data/:ro
