@@ -15,8 +15,3 @@ services:
     - REMOTE_HOST=10.1.1.74,10.2.1.75
     - LOCAL_PORT=998,999
     - KEY=/data/id_rsa
-  logging:
-    driver: syslog
-    options:
-      tag: docker-likinioSshtunnel
-  restart: always
