@@ -4,7 +4,6 @@ services:
 
  sshtunnel:
   image: likinio365/sshtunnel:1.1
-   #image: vlikollari/sshtunnel:latest0
   network_mode: "host"
   volumes:
     - /root/docker/mycustomtunnel/data/:/data/:ro
