@@ -6,7 +6,7 @@ services:
   image: likinio365/sshtunnel:1.1
   network_mode: "host"
   volumes:
-    - /root/docker/mycustomtunnel/data/:/data/:ro
+    - ~/mycustomtunnel/data/:/data/:ro
   environment:
     - H=1
     - REMOTE=true
