@@ -17,7 +17,7 @@ In docker-compose.yml
        version: '3.8'
         services:
          sshtunnel:
-          image: likinio365/sshtunnel:1.0
+          image: likinio365/sshtunnel:latest
           network_mode: "host"
           volumes:
             - ~/data/:/data/:ro
@@ -46,7 +46,7 @@ Don't forget to define the number of tunnels you want on H variable , value shou
     version: '3.8'
     services:
      sshtunnel:
-      image: likinio365/sshtunnel:1.0
+      image: likinio365/sshtunnel:latest
       network_mode: "host"
       volumes:
         - ~/data/:/data/:ro
