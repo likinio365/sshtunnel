@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
  sshtunnel:
-  image: likinio365/sshtunnel:1.1
+  image: likinio365/sshtunnel:latest
   network_mode: "host"
   volumes:
     - ~/mycustomtunnel/data/:/data/:ro
