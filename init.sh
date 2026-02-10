@@ -17,12 +17,13 @@ create_tunnel() {
 
     log_message "Using Key ${key} to create tunnel_$index ${forwarding}"
 
-    ssh \
+    ssh \     
         -v \
-        -o TCPKeepAlive=yes \
-        -o ServerAliveCountMax=20 \
-        -o ServerAliveInterval=15 \
-        -o StrictHostKeyChecking=no \
+        -o ExitOnForwardFailure=yes \
+        -o ServerAliveInterval=10 \
+        -o ServerAliveCountMax=3 \
+        -o ConnectTimeout=10 \
+        -o StrictHostKeyChecking=accept-new \
         ${forwarding} \
         -i ${key}
 }
