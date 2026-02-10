@@ -44,18 +44,24 @@ Here is the **docker-compose.yml** .
 Don't forget to define the number of tunnels you want on H variable , value should be number -1 . On my example is 3-1=2
 
     version: '3.8'
-    services:
-     sshtunnel:
-      image: likinio365/sshtunnel:latest
-      network_mode: "host"
-      volumes:
-        - ~/data/:/data/:ro
-      environment:
-        - H=2
+     services:
+      sshtunnel:
+       image: likinio365/sshtunnel:latest
+       network_mode: "host"
+       restart: always
+       volumes:
+        - ~/mycustomtunnel/data/:/data/:ro
+       environment:
+        - H=1
         - REMOTE=true
-        - TUNNEL_HOST=10.10.10.1,10.10.10.2,10.10.10.3
-        - REMOTE_PORT=443,443,443
-        - REMOTE_HOST=10.1.1.10,10.1.1.11,10.1.1.12
-        - LOCAL_PORT=499,500,501
+        - TUNNEL_HOST=10.1.1.198,10.1.2.199
+        - REMOTE_PORT=443,443
+        - REMOTE_HOST=10.1.1.74,10.2.1.75
+        - LOCAL_PORT=998,999
         - KEY=/data/id_rsa
-      restart: always
+       healthcheck:
+        test: ["CMD-SHELL", "nc -z 127.0.0.1 998 && nc -z 127.0.0.1 999"]
+        interval: 10s
+        timeout: 3s
+        retries: 3
+        start_period: 10s
