@@ -5,6 +5,7 @@ services:
  sshtunnel:
   image: likinio365/sshtunnel:latest
   network_mode: "host"
+  restart: always
   volumes:
     - ~/mycustomtunnel/data/:/data/:ro
   environment:
@@ -15,3 +16,9 @@ services:
     - REMOTE_HOST=10.1.1.74,10.2.1.75
     - LOCAL_PORT=998,999
     - KEY=/data/id_rsa
+ healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 998 && nc -z 127.0.0.1 999"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
